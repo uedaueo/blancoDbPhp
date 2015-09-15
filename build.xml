@@ -146,9 +146,8 @@
 	<target name="generate.php">
 		<echo>blancoDb生成</echo>
 		<delete dir="tmp/db" />
-		<blancodbphp basepackage="careco" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="dbpassword" jdbcurl="jdbc:mysql://ipaddress:3306/databasename" jdbcuser="dbuser" log="true" metadir="meta/sql" sql="true" table="true" targetdir="blanco.php" encoding="${encoding}" />
 		<!-- blancodbphp basepackage="igapyon" jdbcdriver="org.postgresql.Driver" jdbcpassword="password" jdbcurl="jdbc:postgresql://localhost:5432" jdbcuser="postgres" log="false" metadir="./tmp" sql="true" table="true" targetdir="tmp/blanco" / -->
-		<!-- <blancodbphp basepackage="igapyon" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="password" jdbcurl="jdbc:mysql://localhost:3306/test?useUnicode=true" jdbcuser="root" log="false" metadir="./tmp" sql="true" table="true" targetdir="tmp/blanco" /> -->
+		<blancodbphp basepackage="igapyon" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="root" jdbcurl="jdbc:mysql://localhost:3306/test?useUnicode=true" jdbcuser="root" log="false" metadir="meta/sql" sql="true" table="true" targetdir="blanco.php"  encoding="${encoding}" />
 	</target>
 
 	<target name="cleanblanco">
