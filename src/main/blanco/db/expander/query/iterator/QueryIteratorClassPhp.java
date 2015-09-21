@@ -106,6 +106,9 @@ public class QueryIteratorClassPhp extends BlancoDbAbstractClass {
         new GetStatementMethodPhp(fDbSetting, fSqlInfo, fCgFactory,
                 fCgSourceFile, fCgClass).expand();
 
+        // required 文を出力しない ... 将来的には xls で指定するように？
+        fCgSourceFile.setIsImport(false);
+
         return fCgSourceFile;
     }
 }

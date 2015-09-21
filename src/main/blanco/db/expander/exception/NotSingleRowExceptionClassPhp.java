@@ -99,6 +99,9 @@ public class NotSingleRowExceptionClassPhp {
                     .setSuperclassInvocation("parent::__construct($reason . self::SQLSTATE_NOTSINGLEROW)");
         }
 
+        // required 文を出力しない ... 将来的には xls で指定するように？
+        fCgSourceFile.setIsImport(false);
+
         return fCgSourceFile;
     }
 }

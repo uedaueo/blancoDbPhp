@@ -95,6 +95,9 @@ public class DeadlockExceptionClassPhp {
                     .setSuperclassInvocation("parent::__construct($reason . self::SQLSTATE_DEADLOCK)");
         }
 
+        // required 文を出力しない ... 将来的には xls で指定するように？
+        fCgSourceFile.setIsImport(false);
+
         return fCgSourceFile;
     }
 }
