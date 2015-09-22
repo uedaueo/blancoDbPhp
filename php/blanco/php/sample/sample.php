@@ -27,12 +27,26 @@ spl_autoload_register(array('ClassLoader', '_autoLoad'));
 try {
 
     $dbh = new DbConnection();
+
+    $mysqlnd = function_exists('mysqli_fetch_all');
+
+    if ($mysqlnd) {
+        print "mysqlnd enabled!" . "\n";
+    }
+
+    $clver = $dbh->getConnection()->getAttribute(PDO::ATTR_CLIENT_VERSION);
+    if (strpos($clver, 'mysqlnd') !== false) {
+        print "PDO MySQLnd enabled! : " . $clver . "\n";
+    }
+
     $ite = new SimpleBlancoSelectAllIterator($dbh->getConnection());
     $ite->prepareStatement();
 
+    $stmt = $ite->getStatement();
+
     while ($ite->next()) {
         $row = $ite->getRow();
-        print $result . "\n";
+        print $row . "\n";
     }
 
 } catch (Exception $e) {

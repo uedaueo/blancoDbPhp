@@ -9,6 +9,7 @@
  */
 package blanco.db.expander.query.iterator;
 
+import java.sql.Types;
 import java.util.List;
 
 import blanco.cg.BlancoCgObjectFactory;
@@ -74,9 +75,19 @@ public class GetRowMethodPhp extends BlancoDbAbstractMethod {
             final BlancoDbMetaDataColumnStructure columnStructure = (BlancoDbMetaDataColumnStructure) fSqlInfo
                     .getResultSetColumnList().get(index);
 
+            /* tueda */
+            System.out.printf("### " + columnStructure.getName() + " : " + columnStructure.getDataType());
+            String caster = "";
+            if (columnStructure.getDataType() == Types.TINYINT
+                    || columnStructure.getDataType() == Types.SMALLINT
+                    || columnStructure.getDataType() == Types.INTEGER
+                    || columnStructure.getDataType() == Types.BIGINT) {
+                caster = "(int)";
+            }
+
             listLine.add("$result->set"
                     + BlancoNameAdjuster.toClassName(columnStructure.getName())
-                    + "($this->fCurrentRow[" + index + "]);");
+                    + "(" + caster + "$this->fCurrentRow[" + index + "]);");
 
             indexCol++;
         }
