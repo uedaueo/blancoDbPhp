@@ -39,7 +39,7 @@ public class QueryConstructorPhp extends BlancoDbAbstractMethod {
 
         cgMethod.getParameterList()
                 .add(
-                        fCgFactory.createParameter("connection", "pdo.PDO",
+                        fCgFactory.createParameter("connection", "PDO",
                                 "データベース接続"));
 
         cgMethod.getLangDoc().getDescriptionList().add(

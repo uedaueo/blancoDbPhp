@@ -39,7 +39,7 @@ public class GetStatementMethodPhp extends BlancoDbAbstractMethod {
                 "ステートメント (PDOStatement) を取得します。");
         fCgClass.getMethodList().add(cgMethod);
 
-        cgMethod.setReturn(fCgFactory.createReturn("pdo.PDOStatement",
+        cgMethod.setReturn(fCgFactory.createReturn("PDOStatement",
                 "Statementオブジェクト"));
 
         cgMethod.getLangDoc().getDescriptionList().add(

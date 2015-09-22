@@ -45,7 +45,7 @@ public class QueryIteratorClassPhp extends BlancoDbAbstractClass {
         fCgClass = fCgFactory.createClass(className, className + "クラス");
         fCgSourceFile.getClassList().add(fCgClass);
 
-        fCgSourceFile.getImportList().add("pdo.PDO");
+        fCgSourceFile.getImportList().add("PDO");
 
         fCgClass.getLangDoc().getDescriptionList().add(
                 "QueryIteratorに属するクラスです。");

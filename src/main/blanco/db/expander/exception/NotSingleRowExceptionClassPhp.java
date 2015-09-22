@@ -57,7 +57,7 @@ public class NotSingleRowExceptionClassPhp {
         fCgSourceFile.getClassList().add(cgClass);
 
         cgClass.getExtendClassList().add(
-                fCgFactory.createType("pdo.PDOException"));
+                fCgFactory.createType("PDOException"));
 
         {
             final List listDesc = cgClass.getLangDoc().getDescriptionList();

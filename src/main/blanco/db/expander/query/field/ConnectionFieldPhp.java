@@ -39,7 +39,7 @@ public class ConnectionFieldPhp extends BlancoDbAbstractField {
 
     public void expand() {
 //        final BlancoCgField cgField = fCgFactory.createField("fConnection",
-//                "pdo.PDO", "このクラスが内部的に利用するデータベース接続オブジェクト。");
+//                "PDO", "このクラスが内部的に利用するデータベース接続オブジェクト。");
         /*
          * 本当は blancoCg で pdo. を外したい
          */

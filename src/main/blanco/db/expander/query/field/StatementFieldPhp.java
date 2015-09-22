@@ -39,7 +39,7 @@ public class StatementFieldPhp extends BlancoDbAbstractField {
 
     public void expand() {
         final BlancoCgField cgField = fCgFactory.createField("fStatement",
-                "pdo.PDOStatement", "このクラスが内部的に利用するステートメントオブジェクト。");
+                "PDOStatement", "このクラスが内部的に利用するステートメントオブジェクト。");
         fCgClass.getFieldList().add(cgField);
 
         cgField.getLangDoc().getDescriptionList().add("");
