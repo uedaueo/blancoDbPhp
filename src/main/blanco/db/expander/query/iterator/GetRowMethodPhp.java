@@ -76,7 +76,7 @@ public class GetRowMethodPhp extends BlancoDbAbstractMethod {
                     .getResultSetColumnList().get(index);
 
             /* tueda */
-            System.out.printf("### " + columnStructure.getName() + " : " + columnStructure.getDataType());
+            System.out.println("/* tueda */ " + columnStructure.getName() + " : " + columnStructure.getDataType());
             String caster = "";
             if (columnStructure.getDataType() == Types.TINYINT
                     || columnStructure.getDataType() == Types.SMALLINT
