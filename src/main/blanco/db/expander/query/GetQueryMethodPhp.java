@@ -64,9 +64,9 @@ public class GetQueryMethodPhp extends BlancoDbAbstractMethod {
             }
 
             if (index == 0) {
-                listLine.add("$buf = '" + line + "';");
+                listLine.add("$buf = \"" + line + "\";");
             } else {
-                listLine.add("$buf = $buf . '" + line + "';");
+                listLine.add("$buf = $buf . \"" + line + "\";");
             }
         }
 

@@ -106,8 +106,8 @@ public class SetInputParameterMethodPhp extends BlancoDbAbstractMethod {
 
                 listLine.add("// SQL入力パラメータ[" + columnStructure.getName()
                         + "]を設定します。");
-                listLine.add("$this->fStatement->bindParam(':"
-                        + columnStructure.getName() + "', $"
+                listLine.add("$this->fStatement->bindParam(\":"
+                        + columnStructure.getName() + "\", $"
                         + columnStructure.getName() + ", "
                         + BlancoDbMappingUtilPhp.getPdoType(columnStructure)
                         + ");");
