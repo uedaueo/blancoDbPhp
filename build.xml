@@ -105,7 +105,7 @@
 	<target name="compile">
 		<delete dir="bin" />
 		<mkdir dir="bin" />
-		<javac destdir="bin" debug="true" source="1.8" target="1.8" fork="false" encoding="${encoding}">
+		<javac destdir="bin" debug="true" source="1.7" target="1.7" fork="false" encoding="${encoding}">
 			<src path="blanco/main/" />
 			<src path="src/" />
 			<classpath>
@@ -147,7 +147,8 @@
 		<echo>blancoDb生成</echo>
 		<delete dir="tmp/db" />
 		<!-- blancodbphp basepackage="igapyon" jdbcdriver="org.postgresql.Driver" jdbcpassword="password" jdbcurl="jdbc:postgresql://localhost:5432" jdbcuser="postgres" log="false" metadir="./tmp" sql="true" table="true" targetdir="tmp/blanco" / -->
-		<blancodbphp basepackage="igapyon" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="root" jdbcurl="jdbc:mysql://localhost:3306/test?useUnicode=true" jdbcuser="root" log="false" metadir="meta/sql" sql="true" table="true" targetdir="blanco.php"  encoding="${encoding}" />
+		<!-- <blancodbphp basepackage="igapyon" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="root" jdbcurl="jdbc:mysql://localhost:3306/test?useUnicode=true" jdbcuser="root" log="false" metadir="meta/sql" sql="true" table="true" targetdir="blanco.php"  encoding="${encoding}" />-->
+		<blancodbphp basepackage="careco.dao" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="udbcareco" jdbcurl="jdbc:mysql://192.168.179.123:3306/dbcareco?useUnicode=true" jdbcuser="udbcareco" log="false" metadir="meta/sql" sql="true" table="false" targetdir="blanco.php"  encoding="${encoding}" />
 	</target>
 
 	<target name="cleanblanco">
