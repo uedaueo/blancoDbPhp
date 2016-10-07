@@ -22,6 +22,7 @@ import blanco.db.expander.query.PrepareStatementMethodPhp;
 import blanco.db.expander.query.QueryConstructorPhp;
 import blanco.db.expander.query.field.ConnectionFieldPhp;
 import blanco.db.expander.query.field.CurrentRowFieldPhp;
+import blanco.db.expander.query.field.AlternativeConnectionFlgFieldPhp;
 import blanco.db.expander.query.field.StatementFieldPhp;
 
 /**
@@ -61,6 +62,9 @@ public class QueryIteratorClassPhp extends BlancoDbAbstractClass {
         new StatementFieldPhp(fDbSetting, fSqlInfo, fCgFactory, fCgSourceFile,
                 fCgClass).expand();
         new CurrentRowFieldPhp(fDbSetting, fSqlInfo, fCgFactory, fCgSourceFile,
+                fCgClass).expand();
+
+        new AlternativeConnectionFlgFieldPhp(fDbSetting, fSqlInfo, fCgFactory, fCgSourceFile,
                 fCgClass).expand();
 
         new QueryConstructorPhp(fDbSetting, fSqlInfo, fCgFactory,

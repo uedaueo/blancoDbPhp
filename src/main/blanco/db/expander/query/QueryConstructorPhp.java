@@ -16,6 +16,7 @@ import blanco.cg.valueobject.BlancoCgClass;
 import blanco.cg.valueobject.BlancoCgMethod;
 import blanco.cg.valueobject.BlancoCgSourceFile;
 import blanco.db.common.expander.BlancoDbAbstractMethod;
+import blanco.db.common.resourcebundle.BlancoDbCommonResourceBundle;
 import blanco.db.common.valueobject.BlancoDbSetting;
 import blanco.db.common.valueobject.BlancoDbSqlInfoStructure;
 
@@ -23,6 +24,9 @@ import blanco.db.common.valueobject.BlancoDbSqlInfoStructure;
  * 個別のメソッドを展開するためのクラス。
  */
 public class QueryConstructorPhp extends BlancoDbAbstractMethod {
+
+    private final BlancoDbCommonResourceBundle fbundle = new BlancoDbCommonResourceBundle();
+
     public QueryConstructorPhp(final BlancoDbSetting argDbSetting,
             final BlancoDbSqlInfoStructure argSqlInfo,
             final BlancoCgObjectFactory argCgFactory,
@@ -37,10 +41,17 @@ public class QueryConstructorPhp extends BlancoDbAbstractMethod {
                 .getName(), fCgClass.getName() + "クラスのコンストラクタです。");
         fCgClass.getMethodList().add(cgMethod);
 
-        cgMethod.getParameterList()
-                .add(
-                        fCgFactory.createParameter("connection", "PDO",
-                                "データベース接続"));
+        if(fSqlInfo.getConnectionMethod().equalsIgnoreCase(fbundle.getConnectionmethodOriginal())){
+            cgMethod.getParameterList()
+                    .add(
+                            fCgFactory.createParameter("dbh", "AbstractDbConnection",
+                                    "データベース接続"));
+        }else{
+            cgMethod.getParameterList()
+                    .add(
+                            fCgFactory.createParameter("connection", "PDO",
+                                    "データベース接続"));
+        }
 
         cgMethod.getLangDoc().getDescriptionList().add(
                 "※注意：クラスを利用後、最後に必ずclose()メソッドを呼び出す必要があります。");
@@ -49,6 +60,14 @@ public class QueryConstructorPhp extends BlancoDbAbstractMethod {
 
         final List listLine = cgMethod.getLineList();
 
+        if(fSqlInfo.getConnectionMethod().equalsIgnoreCase(fbundle.getConnectionmethodOriginal())){
+
+            listLine.add("if ($dbh == NULL) {");
+            listLine.add("    throw new Exception('[ArgumentException]: " + fCgClass.getName() +  "." + fCgClass.getName() + " の1番目のパラメータに NULL が与えられました。');");
+            listLine.add("}");
+
+            listLine.add("$connection = $dbh->getConnection($this->fAlternativeConnectionFlg);");
+        }
         listLine.add("$this->fConnection = $connection;");
     }
 }

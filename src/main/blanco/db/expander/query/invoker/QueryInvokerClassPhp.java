@@ -22,6 +22,7 @@ import blanco.db.expander.query.PrepareStatementMethod2Php;
 import blanco.db.expander.query.PrepareStatementMethodPhp;
 import blanco.db.expander.query.QueryConstructorPhp;
 import blanco.db.expander.query.field.ConnectionFieldPhp;
+import blanco.db.expander.query.field.AlternativeConnectionFlgFieldPhp;
 import blanco.db.expander.query.field.StatementFieldPhp;
 import blanco.db.expander.query.iterator.SetInputParameterMethodPhp;
 
@@ -64,6 +65,9 @@ public class QueryInvokerClassPhp extends BlancoDbAbstractClass {
         new ConnectionFieldPhp(fDbSetting, fSqlInfo, fCgFactory, fCgSourceFile,
                 fCgClass).expand();
         new StatementFieldPhp(fDbSetting, fSqlInfo, fCgFactory, fCgSourceFile,
+                fCgClass).expand();
+
+        new AlternativeConnectionFlgFieldPhp(fDbSetting, fSqlInfo, fCgFactory, fCgSourceFile,
                 fCgClass).expand();
 
         new QueryConstructorPhp(fDbSetting, fSqlInfo, fCgFactory,
