@@ -18,6 +18,7 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import blanco.db.expander.common.AbstractDbConnectionClassPhp;
 import org.xml.sax.SAXException;
 
 import blanco.cg.BlancoCgObjectFactory;
@@ -57,18 +58,8 @@ public abstract class BlancoDbXml2PhpClass implements IBlancoDbProgress {
     /**
      * XMLファイルからソースコードを生成します。
      * 
-     * @param connDef
-     *            データベース接続情報。
      * @param blancoSqlDirectory
      *            SQL XMLファイルが格納されているディレクトリ。
-     * @param rootPackage
-     *            ルートとなる基準パッケージ。
-     * @param runtimePackage
-     *            blancoに設定するランタイムパッケージ。nullならデフォルトに出力。
-     * @param statementTimeout
-     *            ステートメントタイムアウト値。
-     * @param blancoTargetSourceDirectory
-     *            出力先ディレクトリ。
      * @throws SQLException
      * @throws SAXException
      * @throws IOException
@@ -130,8 +121,6 @@ public abstract class BlancoDbXml2PhpClass implements IBlancoDbProgress {
     /**
      * 個別のXMLファイルを処理します。
      * 
-     * @param dbInfoCollector
-     * @param rootPackage
      * @param fileSqlForm
      * @param outputDirectory
      * @throws IOException
@@ -183,6 +172,14 @@ public abstract class BlancoDbXml2PhpClass implements IBlancoDbProgress {
         transformer.transform(adjust(new TooManyRowsModifiedExceptionClassPhp(
                 cgFactory, packageNameException).expand()), fileBlancoMain);
 
+        // common系
+        final String packageNameCommon = BlancoDbUtil
+                .getRuntimePackage(fDbSetting)
+                + ".common";
+        transformer.transform(adjust(new AbstractDbConnectionClassPhp(cgFactory,
+                packageNameCommon).expand()), fileBlancoMain);
+
+
         // util系
         // 現時点では PHP版にはutil系のクラスはありません。
 
@@ -218,8 +215,6 @@ public abstract class BlancoDbXml2PhpClass implements IBlancoDbProgress {
     /**
      * 行オブジェクトを作成します。
      * 
-     * @param className
-     * @param packageName
      * @param sqlInfo
      * @param outputDirectory
      * @throws SAXException
