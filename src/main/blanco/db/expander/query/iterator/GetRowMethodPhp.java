@@ -87,7 +87,7 @@ public class GetRowMethodPhp extends BlancoDbAbstractMethod {
 
             listLine.add("$result->set"
                     + BlancoNameAdjuster.toClassName(columnStructure.getName())
-                    + "(" + caster + "$this->fCurrentRow[" + index + "]);");
+                    + "(" + caster + "$this->fCurrentRow['" + columnStructure.getName() + "']);");
 
             indexCol++;
         }

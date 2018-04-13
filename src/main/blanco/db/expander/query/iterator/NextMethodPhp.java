@@ -60,7 +60,7 @@ public class NextMethodPhp extends BlancoDbAbstractMethod {
         listLine.add("$this->executeQuery();");
         listLine.add("}");
         listLine.add("");
-        listLine.add("$result = $this->fStatement->fetch();");
+        listLine.add("$result = $this->fStatement->fetch_assoc();");
         listLine.add("if (($result !== FALSE)) {");
         listLine.add("$this->fCurrentRow = $result;");
         listLine.add("return TRUE;");
