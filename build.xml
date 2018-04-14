@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="blancoDbPhp" default="build" basedir=".">
 	<!-- blancoAnt(0.1.7)により自動生成されました。 (2009/11/05) -->
-	<property name="version" value="0.1.4.1" />
+	<property name="version" value="0.1.5.0" />
 
 	<property name="project" value="blancoDbPhp" />
 	<property name="project.lower" value="blancodbphp" />
@@ -10,6 +10,15 @@
 
 	<property name="encoding" value="UTF-8" />
 	<!-- property name="eclipse.dir" value="C:/Program Files/eclipse" / -->
+
+	<property name="jdbcdriver" value="org.mariadb.jdbc.Driver" />
+	<property name="jdbcurl" value="jdbc:mariadb://<hostname>:3306/<dbname>" />
+	<property name="jdbcuser" value="<user>" />
+	<property name="jdbcpassword" value="<password>" />
+	<property name="basepackage" value="<package>" />
+	<property name="sql" value="true" />
+	<property name="table" value="false" />
+	<property name="verbose" value="true" />
 
 	<!-- Antタスク定義 begin -->
 	<taskdef name="blancoanttask" classname="blanco.anttask.task.BlancoAntTaskTask">
@@ -105,7 +114,7 @@
 	<target name="compile">
 		<delete dir="bin" />
 		<mkdir dir="bin" />
-		<javac destdir="bin" debug="true" source="1.7" target="1.7" fork="false" encoding="${encoding}">
+		<javac destdir="bin" debug="true" source="1.8" target="1.8" fork="false" encoding="${encoding}">
 			<src path="blanco/main/" />
 			<src path="src/" />
 			<classpath>
@@ -148,7 +157,8 @@
 		<delete dir="tmp/db" />
 		<!-- blancodbphp basepackage="igapyon" jdbcdriver="org.postgresql.Driver" jdbcpassword="password" jdbcurl="jdbc:postgresql://localhost:5432" jdbcuser="postgres" log="false" metadir="./tmp" sql="true" table="true" targetdir="tmp/blanco" / -->
 		<!-- <blancodbphp basepackage="igapyon" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="root" jdbcurl="jdbc:mysql://localhost:3306/test?useUnicode=true" jdbcuser="root" log="false" metadir="meta/sql" sql="true" table="true" targetdir="blanco.php"  encoding="${encoding}" />-->
-		<blancodbphp basepackage="careco.dao" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="udbcareco" jdbcurl="jdbc:mysql://192.168.179.123:3306/dbcareco?useUnicode=true" jdbcuser="udbcareco" log="false" metadir="meta/sql" sql="true" table="false" targetdir="blanco.php"  encoding="${encoding}" />
+		<!--<blancodbphp basepackage="careco.dao" jdbcdriver="com.mysql.jdbc.Driver" jdbcpassword="udbcareco" jdbcurl="jdbc:mysql://192.168.179.123:3306/dbcareco?useUnicode=true" jdbcuser="udbcareco" log="false" metadir="meta/sql" sql="true" table="false" targetdir="blanco.php"  encoding="${encoding}" />-->
+		<blancodbphp basepackage="${basedir}" jdbcdriver="${jdbcdriver}" jdbcpassword="${jdbcpassword}" jdbcurl="${jdbcurl}" jdbcuser="${jdbcuser}" log="false" metadir="meta/sql" sql="${sql}" table="${table}" targetdir="blanco.php"  encoding="${encoding}" />
 	</target>
 
 	<target name="cleanblanco">
