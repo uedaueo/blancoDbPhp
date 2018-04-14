@@ -1,0 +1,8 @@
+jdbcdriver=org.mariadb.jdbc.Driver
+jdbcurl=jdbc:mariadb://10.211.55.7:3306/dapandachat
+jdbcuser=root
+jdbcpassword=root
+basepackage=kinoko.dao
+sql=true
+table=false
+verbose=true

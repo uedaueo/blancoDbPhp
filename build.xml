@@ -11,14 +11,8 @@
 	<property name="encoding" value="UTF-8" />
 	<!-- property name="eclipse.dir" value="C:/Program Files/eclipse" / -->
 
-	<property name="jdbcdriver" value="org.mariadb.jdbc.Driver" />
-	<property name="jdbcurl" value="jdbc:mariadb://<hostname>:3306/<dbname>" />
-	<property name="jdbcuser" value="<user>" />
-	<property name="jdbcpassword" value="<password>" />
-	<property name="basepackage" value="<package>" />
-	<property name="sql" value="true" />
-	<property name="table" value="false" />
-	<property name="verbose" value="true" />
+	<!-- データベース情報をbuild.propertiesに設定してください(build.properties.sample参照) -->
+	<loadproperties srcFile="build.properties" />
 
 	<!-- Antタスク定義 begin -->
 	<taskdef name="blancoanttask" classname="blanco.anttask.task.BlancoAntTaskTask">
